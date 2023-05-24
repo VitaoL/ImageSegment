@@ -1,0 +1,11 @@
+.buttonAction {
+    background-color: rgba(175, 171, 171, 0.001);
+    padding: 3px 7px;
+    border: 2px;
+    border-radius: 5px;
+    color: black;
+}
+
+.buttonAction:hover {
+    background-color: rgba(175, 171, 171, 0.2);
+}
