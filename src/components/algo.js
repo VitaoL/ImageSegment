@@ -6,6 +6,24 @@ const CanvasComponent = () => {
   const [height, setHeight] = useState(500);
   const [draw, setDraw] = useState(false);
 
+  function getMousePos(canvas, evt) {
+    var rect = canvas.getBoundingClientRect();
+    return {
+      x: evt.clientX - rect.left,
+      y: evt.clientY - rect.top,
+    };
+  }
+
+  function drawLine(context, p1, p2, width, color) {
+    context.beginPath();
+    context.moveTo(p1.x, p1.y);
+    context.lineTo(p2.x, p2.y);
+    context.lineWidth = width;
+    context.strokeStyle = color;
+    context.lineCap = "round";
+    context.stroke();
+  }
+
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas?.getContext("2d");
@@ -19,7 +37,8 @@ const CanvasComponent = () => {
     };
     const handleMouseMove = (evt) => {
       if (draw) {
-        ctx.lineTo(evt.clientX, evt.clientY);
+        const pos = getMousePos(canvas, evt);
+        drawLine(ctx, pos, pos, "4", "#ff0000");
         ctx.stroke();
       }
     };
@@ -35,6 +54,7 @@ const CanvasComponent = () => {
   }, [draw]);
   const deleteImage = () => {
     const canvas = canvasRef.current;
+    
     const ctx = canvas?.getContext("2d");
     if (ctx && canvas) ctx.clearRect(0, 0, canvas.width, canvas.height); // Limpa o conteúdo anterior do canvas
   };
@@ -47,6 +67,7 @@ const CanvasComponent = () => {
       const img = new Image();
       img.onload = () => {
         const canvas = canvasRef.current;
+        console.log(canvas)
         const ctx = canvas?.getContext("2d");
         if (ctx && canvas) {
           ctx.clearRect(0, 0, canvas.width, canvas.height); // Limpa o conteúdo anterior do canvas

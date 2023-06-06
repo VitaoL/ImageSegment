@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import ButtonAction from "../buttonAction";
 import "./style.css";
 import { BsPencil, BsEraser, BsTrash, BsEye, BsReply } from "react-icons/bs";
+import { useDispatch } from "react-redux";
+import { changeColor } from "../../redux/colorSlice";
 const allButtons = [
   {
     id: "drawOTool",
@@ -63,6 +65,11 @@ const allButtons = [
 
 const Header = () => {
   const [title, setTitle] = useState("Undefined");
+  const dispatch = useDispatch();
+
+  const handleColor = (event) => {
+    dispatch(changeColor(event.target.value));
+  };
 
   return (
     <div className="Header">
@@ -86,6 +93,7 @@ const Header = () => {
               dataToggle={element.dataToggle}
               dataContainer={element.dataContainer}
               icon={element.icon}
+              handleColor={handleColor}
             />
           );
         })}

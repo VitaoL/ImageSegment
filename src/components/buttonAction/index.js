@@ -9,6 +9,7 @@ const ButtonAction = ({
   dataContainer,
   icon,
   key,
+  handleColor,
 }) => {
   return (
     <button
@@ -19,6 +20,8 @@ const ButtonAction = ({
       data-toggle={dataToggle}
       title={title}
       data-container={dataContainer}
+      onClick={(event) => handleColor(event)}
+      value={"red"}
     >
       <span> {icon}</span>
     </button>
