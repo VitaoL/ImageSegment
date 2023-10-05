@@ -9,3 +9,9 @@
 .buttonAction:hover {
     background-color: rgba(175, 171, 171, 0.2);
 }
+
+.iconImg svg { 
+    min-width: 50px;
+    max-width: 100px;
+    height: 30px;
+}

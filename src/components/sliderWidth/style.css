@@ -1,0 +1,31 @@
+:root {
+  font-family: "Roboto", sans-serif;
+}
+
+.sliderDiv {
+  margin: 2px 4px;
+  padding: 2px 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.circleContainer {
+
+  margin-left: auto;
+  margin-right: auto;
+
+
+}
+
+.circle {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  background-color: #333;
+  border-radius: 50%;
+
+
+  /* width and height can be anything, as long as they're equal */
+}
